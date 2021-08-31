@@ -49,11 +49,17 @@ def deleteUser(userid):
 
 
 @app.route('/<string:url>')
-
 def staticPage(url):
     print("static page",url)
     try:
         return render_template(url)
+    except Exception as err:
+        abort(404)
+
+@app.route('/')
+def default():
+    try:
+        return redirect("login.html")
     except Exception as err:
         abort(404)
 
