@@ -10,7 +10,7 @@ class Settings:
     #password='root'
 
     #Staging on heroku
-    host=os.environ['Host']
-    database=os.environ['Database']
-    user=os.environ['Username']
-    password=os.environ['Password']
+    host=os.environ['HOST']
+    database=os.environ['DATABASE']
+    user=os.environ['USER']
+    password=os.environ['PASSWORD']
