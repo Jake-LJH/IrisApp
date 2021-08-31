@@ -12,6 +12,6 @@ class Settings:
     #Staging on heroku
     host="s29oj5odr85rij2o.cbetxkdyhwsb.us-east-1.rds.amazonaws.com"
     #os.environ['HOST']
-    database=os.environ['DATABASE']
+    database=os.environ['Database']
     user=os.environ['USERNAME']
     password=os.environ['PASSWORD']
