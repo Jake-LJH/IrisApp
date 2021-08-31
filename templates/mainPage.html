@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ML API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1 class="display-3">Iris Flower Prediction</h1>
+            <p>AN AI DEVOPS PROJECT</p>
+            
+        </div>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for("logout") }}">Logout</a>
+            </li>
+        </ul>
+        <img class="mx-auto d-block img-fluid" src="/static/images/iris.png" alt="Iris"  width="800">
+    
+    </div>
+    <div class="container">
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" name="SepalLength" placeholder="Sepal Length(cm)" required="required" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="SepalWidth" placeholder="Sepal Width(cm)" required="required" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="PetalLength" placeholder="Petal Length(cm)" required="required" />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="PetalWidth" placeholder="Petal Width(cm)" required="required" />
+            </div>
+                <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+            
+        </form>
+        <hr>
+        <br>
+        <h4 class="text-center display-4">Prediction Results</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Sepal Length</th> 
+                    <th class="text-center">Sepal Width</th> 
+                    <th class="text-center">Petal Length</th> 
+                    <th class="text-center">Petal Width</th> 
+                    <th class="text-center">Prediction</th> 
+                    <th class="text-center">Timestamp</th> 
+                    <th></th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data%}
+                <tr>
+                    <td class="text-center">{{ row.sepal_w }}</td>
+                    <td class="text-center">{{ row.sepal_len }}</td>
+                    <td class="text-center">{{ row.petal_len }}</td>
+                    <td class="text-center">{{ row.petal_w }}</td>
+                    <td class="text-center">{{ row.result|capitalize }}</td>
+                    <td class="text-center">{{ row.timestamp }}</td>
+                    <td class="text-center">
+                        <form action="{{ url_for('remove')}}" method="POST">
+                            <input type="hidden" name="id" value="{{ row.id }}"/>
+                            <button type="submit" class="btn btn-danger btn-large">Remove</button>
+                        </form>
+                    </th>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
