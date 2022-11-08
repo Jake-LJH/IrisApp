@@ -12,7 +12,9 @@ When you provide all features of flower it predicts the type of flower according
 The second objective is to showcase the use of CRUD operation using the MVC Model of the web app.
 
 
-## Visit https://iris-ai.herokuapp.com for Live Demo
+~~Visit https://iris-ai.herokuapp.com for Live Demo~~
+:warning::red_circle: This link no longer active as Heroku does not provide free hosting :red_circle::warning:
+
 For Demostration purpose, users are to create an account to try it out. There are no email authentication. Eg. email@email.com is fine.
 Otherwise users may use the following credentials for login:
 
